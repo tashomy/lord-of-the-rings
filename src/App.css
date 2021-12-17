@@ -1,0 +1,16 @@
+body {
+  color: black;
+}
+@import "./styles/reset.css";
+@import "./styles/home.css";
+@import "./styles/header.css";
+@import "./styles/showcase.css";
+
+@font-face {
+  font-family: myFont1;
+  src: url(./fonts/HobbitonBrushhandhobbitonBrush-WygA.ttf);
+}
+@font-face {
+  font-family: myFont2;
+  src: url(./fonts/Elvencommonspeak-0WXz.ttf);
+}
