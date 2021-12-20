@@ -1,9 +1,10 @@
 #showcase {
-  margin-top: 10% !important;
+  /* margin-top: 20% !important; */
   width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  height: 100vh !important;
 }
 
 #showcase h1 {
@@ -11,4 +12,26 @@
   font-size: 70px;
   font-weight: 100;
   color: rgba(255, 194, 102, 0.7);
+}
+
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.left p {
+  color: rgba(255, 194, 102, 0.5);
+  font-family: myFont2;
+  font-size: 40px;
+  font-weight: 100;
+}
+
+.right p {
+  color: rgba(255, 194, 102, 0.5);
+  font-family: myFont2;
+  font-size: 40px;
+  font-weight: 100;
 }

@@ -1,24 +1,53 @@
-import React, { Component } from "react";
-import Header from "../components/Header";
+import React, { useEffect, useState } from "react";
+import Lists from "../components/Lists";
 import Showcase from "../components/Showcase";
+import Header from "../components/Header";
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { loader: true };
+const Home = () => {
+  const [movies, setMovies] = useState();
+  const [books, setBooks] = useState();
+
+  const headers = {
+    Accept: "application/json",
+    Authorization: "Bearer tXXcnBscxMooPo6b_dmu",
+  };
+
+  useEffect(() => {
+    async function getMovies() {
+      const request = fetch("https://the-one-api.dev/v2/movie", {
+        headers: headers,
+      });
+      const response = await request;
+      const parsed = await response.json();
+      setMovies(parsed);
+    }
+    async function getBooks() {
+      const request = fetch("https://the-one-api.dev/v2/book");
+      const response = await request;
+      const parsed = await response.json();
+      setBooks(parsed);
+    }
+
+    getMovies();
+    getBooks();
+  }, []);
+
+  if (movies === undefined) {
+    return null;
   }
-  componentDidMount() {
-    let self = this;
-    self.setState({ loader: false });
+
+  if (books === undefined) {
+    return null;
   }
-  render() {
-    return (
-      <div className="container" id="home-container">
+
+  return (
+    <>
+      <div id="home-container">
         <Header></Header>
-        <Showcase></Showcase>
+        <Showcase movies={movies} books={books}></Showcase>
       </div>
-    );
-  }
-}
-
+      <Lists movies={movies}></Lists>
+    </>
+  );
+};
 export default Home;

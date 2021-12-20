@@ -18,11 +18,11 @@ export default function Header() {
           <Link to="/">
             <li>Home</li>
           </Link>
-          <Link to="/movies">
-            <li>Movies</li>
+          <Link to="/moviesList">
+            <li>Movies List</li>
           </Link>
-          <Link to="/books">
-            <li>Books</li>
+          <Link to="/movieDetails">
+            <li>Movie details</li>
           </Link>
           <Link to="/contacts">
             <li>Contact</li>

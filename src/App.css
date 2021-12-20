@@ -1,11 +1,19 @@
 body {
   color: black;
+  /* background-color: #000; */
 }
+
+a:hover {
+  color: rgba(255, 194, 102, 0.7) !important;
+}
+
 @import "./styles/reset.css";
 @import "./styles/home.css";
 @import "./styles/header.css";
 @import "./styles/showcase.css";
-
+@import "./styles/lists.css";
+@import "./styles/movieList.css";
+@import "./styles/contact.css";
 @font-face {
   font-family: myFont1;
   src: url(./fonts/HobbitonBrushhandhobbitonBrush-WygA.ttf);
@@ -13,4 +21,8 @@ body {
 @font-face {
   font-family: myFont2;
   src: url(./fonts/Elvencommonspeak-0WXz.ttf);
+}
+@font-face {
+  font-family: myFont3;
+  src: url(./fonts/Middleearth-ao6m.ttf);
 }
