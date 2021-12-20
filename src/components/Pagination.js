@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Paginationing = ({ moviesPerPage, totalMovies, paginate }) => {
   const pageNumbers = [];
@@ -17,11 +16,9 @@ const Paginationing = ({ moviesPerPage, totalMovies, paginate }) => {
               onClick={(e) => {
                 paginate(number);
                 e.preventDefault();
-                console.log("radim na click", { number });
               }}
               href="!#"
               className="page-link"
-              style={{ width: "20px" }}
             >
               {number}
             </a>
