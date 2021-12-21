@@ -49,12 +49,20 @@
   color: #fff;
 }
 
+.movie-box ul {
+  list-style: none;
+}
+
 .movie-box ul > * {
   margin: 15px 0 !important;
 }
 
 .movie-box ul h4 {
   color: #fff;
+}
+
+.movie-box ul li {
+  padding-left: 30px !important;
 }
 
 .pagination {

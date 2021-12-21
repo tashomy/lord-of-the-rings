@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import Home from "./pages/home";
 import MovieList from "./pages/movieList";
 import Contact from "./pages/contact";
+import MovieDetails from "./pages/movieDetails";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/moviesList" element={<MovieList />}></Route>
+          <Route exact path="/movieDetails" element={<MovieDetails />}></Route>
           <Route exact path="/contacts" element={<Contact />}></Route>
         </Routes>
       </Router>

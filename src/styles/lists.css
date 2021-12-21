@@ -77,10 +77,6 @@
   margin-top: 5px !important;
 }
 
-.wrap {
-  /* background: url("../images/probaback.jpg") no-repeat center center/cover; */
-}
-
 .top,
 .bottom {
   display: flex;
