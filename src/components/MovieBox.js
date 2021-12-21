@@ -25,13 +25,6 @@ const MovieBox = ({ movies, loading }) => {
     { id: 4, src: returnKing },
   ];
 
-  const templates = {
-    template1: { items: movies },
-    template2: { items: images },
-  };
-
-  console.log(rings);
-
   return (
     <div className="wrap-movie-details">
       {movies.map((item, index) => {
@@ -43,7 +36,6 @@ const MovieBox = ({ movies, loading }) => {
               src={images.at(index).src}
             />
 
-            {console.log(images[index])}
             <Card.Body className="card-body">
               <Card.Title>{item.name}</Card.Title>
               <Card.Text>
