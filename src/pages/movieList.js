@@ -14,14 +14,29 @@ const MovieList = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
     async function getMovies() {
       const request = fetch("https://the-one-api.dev/v2/movie?sort=name:asc", {
         headers: headers,
-      });
-      setLoading(true);
-      const response = await request;
-      const parsed = await response.json();
-      setMovies(parsed);
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else if (response.status == 429) {
+            throw new Error(
+              "Server is overwhelmed right now, give it a minute"
+            );
+          } else {
+            throw new Error("Something went wrong");
+          }
+        })
+        .then((responseJson) => {
+          setMovies(responseJson);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
       setLoading(false);
     }
 

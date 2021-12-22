@@ -21,13 +21,28 @@ const MovieDetails = () => {
 
   useEffect(() => {
     async function getMovies() {
+      setLoading(true);
       const request = fetch("https://the-one-api.dev/v2/movie", {
         headers: headers,
-      });
-      setLoading(true);
-      const response = await request;
-      const parsed = await response.json();
-      setMovies(parsed);
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else if (response.status == 429) {
+            throw new Error(
+              "Server is overwhelmed right now, give it a minute"
+            );
+          } else {
+            throw new Error("Something went wrong");
+          }
+        })
+        .then((responseJson) => {
+          setMovies(responseJson);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
       setLoading(false);
     }
     const fetchData = async () => {
@@ -36,20 +51,46 @@ const MovieDetails = () => {
         {
           headers: headers,
         }
-      );
-      const quotes = await rawQuotes.json();
-      console.log(quotes);
-      const quote = quotes.docs[Math.floor(Math.random() * quotes.docs.length)];
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else if (response.status == 429) {
+            throw new Error(
+              "Server is overwhelmed right now, give it a minute"
+            );
+          } else {
+            throw new Error("Something went wrong");
+          }
+        })
+        .then((responseJson) => {
+          setQuote(responseJson);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
-      setQuote(quotes);
       const rawCharacters = await fetch(
         "https://the-one-api.dev/v2/character",
         { headers: headers }
-      );
-      const characters = await rawCharacters.json();
-      console.log(characters);
-      const character = characters.docs[0];
-      setCharacter(characters);
+      )
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else if (response.status == 429) {
+            throw new Error(
+              "Server is overwhelmed right now, give it a minute"
+            );
+          } else {
+            throw new Error("Something went wrong");
+          }
+        })
+        .then((responseJson) => {
+          setCharacter(responseJson);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     };
 
     getMovies();

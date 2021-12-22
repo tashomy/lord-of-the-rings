@@ -16,16 +16,44 @@ const Home = () => {
     async function getMovies() {
       const request = fetch("https://the-one-api.dev/v2/movie", {
         headers: headers,
-      });
-      const response = await request;
-      const parsed = await response.json();
-      setMovies(parsed);
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else if (response.status == 429) {
+            throw new Error(
+              "Server is overwhelmed right now, give it a minute"
+            );
+          } else {
+            throw new Error("Something went wrong");
+          }
+        })
+        .then((responseJson) => {
+          setMovies(responseJson);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
     async function getBooks() {
-      const request = fetch("https://the-one-api.dev/v2/book");
-      const response = await request;
-      const parsed = await response.json();
-      setBooks(parsed);
+      const request = fetch("https://the-one-api.dev/v2/book")
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          } else if (response.status == 429) {
+            throw new Error(
+              "Server is overwhelmed right now, give it a minute"
+            );
+          } else {
+            throw new Error("Something went wrong");
+          }
+        })
+        .then((responseJson) => {
+          setBooks(responseJson);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
 
     getMovies();
