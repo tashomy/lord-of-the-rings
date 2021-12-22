@@ -29,7 +29,11 @@ const MovieList = () => {
   }, []);
 
   if (movies === undefined) {
-    return null;
+    return (
+      <div className="container">
+        <h1>Loading...</h1>
+      </div>
+    );
   }
   const indexOfLast = currentPage * moviesPerPage;
   const indexOfFirst = indexOfLast - moviesPerPage;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import MovieBox from "../components/MovieBox";
-import Paginationing from "../components/Pagination";
+import Pagination from "../components/Pagination";
 import Quotes from "../components/Quotes";
 import QuoteViews from "../components/QuoteViews";
 
@@ -9,7 +9,7 @@ const MovieDetails = () => {
   const [movies, setMovies] = useState();
   const [quote, setQuote] = useState([]);
   const [character, setCharacter] = useState();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(2);
   const [quotesPerPage] = useState(10);
 
   const [loading, setLoading] = useState(false);
@@ -56,24 +56,27 @@ const MovieDetails = () => {
     fetchData();
   }, []);
 
-  //   const indexOfLast = currentPage * quotesPerPage;
-  //   const indexOfFirst = indexOfLast - quotesPerPage;
-  //   const curr = quote.docs.slice(indexOfFirst, indexOfLast);
-
-  //   const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
   if (movies === undefined) {
-    return null;
+    return (
+      <div className="container">
+        <h1>Loading...</h1>
+      </div>
+    );
   }
   if (quote === undefined) {
-    return null;
+    return (
+      <div className="container">
+        <h1>Loading...</h1>
+      </div>
+    );
   }
   if (character === undefined) {
-    return null;
+    return (
+      <div className="container">
+        <h1>Loading...</h1>
+      </div>
+    );
   }
-
-  console.log(quote);
-  console.log(movies);
 
   return (
     <>
@@ -81,11 +84,13 @@ const MovieDetails = () => {
         <Header></Header>
         <MovieBox movies={movies.docs} loading={loading}></MovieBox>
       </div>
-      <QuoteViews
+      {/* U QuoteViews komponenti sam pokusala na vise nacina da implementiram pretragu citata medjutim uporno nisam dobijala listu svih citata jednog karaktera. U komponenti su ostala dva pokusaja implementacije */}
+      {/* <QuoteViews
         characters={character.docs}
         quotes={quote.docs}
         loading={loading}
-      ></QuoteViews>
+      ></QuoteViews> */}
+
       <Quotes
         quotes={quote.docs}
         characters={character.docs}

@@ -67,7 +67,8 @@
 
 .pagination {
   margin-right: 100px !important;
-  margin-bottom: 100px !important;
+  /* margin-bottom: 100px !important; */
+  z-index: 50;
 }
 
 .page-link {

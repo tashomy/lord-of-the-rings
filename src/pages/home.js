@@ -33,11 +33,19 @@ const Home = () => {
   }, []);
 
   if (movies === undefined) {
-    return null;
+    return (
+      <div className="container">
+        <h1>Loading...</h1>
+      </div>
+    );
   }
 
   if (books === undefined) {
-    return null;
+    return (
+      <div className="container">
+        <h1>Loading...</h1>
+      </div>
+    );
   }
 
   return (
