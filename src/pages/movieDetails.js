@@ -126,11 +126,11 @@ const MovieDetails = () => {
         <MovieBox movies={movies.docs} loading={loading}></MovieBox>
       </div>
       {/* U QuoteViews komponenti sam pokusala na vise nacina da implementiram pretragu citata medjutim uporno nisam dobijala listu svih citata jednog karaktera. U komponenti su ostala dva pokusaja implementacije */}
-      {/* <QuoteViews
+      <QuoteViews
         characters={character.docs}
-        quotes={quote.docs}
+        movies={movies.docs}
         loading={loading}
-      ></QuoteViews> */}
+      ></QuoteViews>
 
       <Quotes
         quotes={quote.docs}
