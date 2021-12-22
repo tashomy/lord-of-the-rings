@@ -15,7 +15,7 @@ const MovieList = () => {
 
   useEffect(() => {
     async function getMovies() {
-      const request = fetch("https://the-one-api.dev/v2/movie", {
+      const request = fetch("https://the-one-api.dev/v2/movie?sort=name:asc", {
         headers: headers,
       });
       setLoading(true);
@@ -41,6 +41,7 @@ const MovieList = () => {
     <div id="movie-lists-container">
       <Header></Header>
       <MovieLists movies={curr} loading={loading}></MovieLists>
+
       <Pagination
         moviesPerPage={moviesPerPage}
         totalMovies={movies.total}
